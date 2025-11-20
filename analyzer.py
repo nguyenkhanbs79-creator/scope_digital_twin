@@ -93,6 +93,13 @@ def analyze_pipeline(graph: PipelineGraph) -> Tuple[List[Finding], List[AttackPa
         )
 
     return findings, attack_paths
+from models import PipelineGraph, Finding, AttackPath
+from typing import List, Tuple
+
+
+def analyze_pipeline(graph: PipelineGraph) -> Tuple[List[Finding], List[AttackPath]]:
+    """Analyze the pipeline graph to derive findings and attack paths."""
+    raise NotImplementedError()
 
 
 def compute_risk_score(findings: List[Finding]) -> int:
@@ -100,6 +107,7 @@ def compute_risk_score(findings: List[Finding]) -> int:
     severity_scores = {"HIGH": 30, "MEDIUM": 15, "LOW": 5}
     total = sum(severity_scores.get(finding.severity, 0) for finding in findings)
     return min(total, 100)
+    raise NotImplementedError()
 
 
 def classify_risk(score: int) -> str:
@@ -123,3 +131,4 @@ def _contains_dangerous_command(cmd: str) -> bool:
     """Detect dangerous download-and-execute command patterns."""
     lowered = cmd.lower()
     return ("curl" in lowered and "bash" in lowered) or ("wget" in lowered and "sh" in lowered)
+    raise NotImplementedError()
