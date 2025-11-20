@@ -6,6 +6,7 @@ from typing import Dict, List
 import yaml
 
 from models import Edge, Node, PipelineGraph
+from models import PipelineGraph
 
 
 def parse_github_actions(workflow_path: str) -> PipelineGraph:
@@ -52,3 +53,4 @@ def parse_github_actions(workflow_path: str) -> PipelineGraph:
             edges.append(Edge(source=job_name, target="deploy_target"))
 
     return PipelineGraph(nodes=nodes, edges=edges)
+    raise NotImplementedError()
